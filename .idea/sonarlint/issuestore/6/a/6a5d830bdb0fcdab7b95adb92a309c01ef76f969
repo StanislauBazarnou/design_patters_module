@@ -1,0 +1,10 @@
+
+]
+java:S1854";Remove this useless assignment to local variable "session".(­Ääışÿÿÿÿ8Å‹›¼ç1
+]
+java:S1075
+"ARefactor your code to get this URI from a customizable parameter.(¿†í'8Æ‹›¼ç1
+N
+java:S1481",Remove this unused "session" local variable.(­Ääışÿÿÿÿ8Ç‹›¼ç1
+L	java:S106"+Replace this use of System.out by a logger.(İÀ¿ùÿÿÿÿ8Ç‹›¼ç1
+L	java:S106"+Replace this use of System.err by a logger.(ïù¯¯ûÿÿÿÿ8È‹›¼ç1
