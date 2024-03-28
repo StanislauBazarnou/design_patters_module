@@ -7,14 +7,20 @@ import org.json.JSONTokener;
 import java.io.InputStream;
 
 public class ServerConfig {
-    private static ServerConfig instance;
+
+    // The volatile is used as an indicator to the Java compiler to always fetch the value of a variable from
+    // main memory and not cache it locally. Every read of the field will see the latest write to that field by any thread
+    private volatile static ServerConfig instance;
     private JSONObject config;
 
-    private static String configFilePath = "config.json";
-
-    public static synchronized ServerConfig getInstance() {
+    // Double Checked Lockin Singleton
+    public static ServerConfig getInstance() {
         if (instance == null) {
-            instance = new ServerConfig();
+            synchronized (ServerConfig.class) {
+                if (instance == null) {
+                    instance = new ServerConfig();
+                }
+            }
         }
         return instance;
     }
@@ -35,6 +41,7 @@ public class ServerConfig {
     }
 
     private void loadConfigFromFile() {
+        String configFilePath = "config.json";
         InputStream is = getClass().getClassLoader().getResourceAsStream(configFilePath);
         if (is == null) {
             throw new IllegalArgumentException("File path not found: " + configFilePath);
