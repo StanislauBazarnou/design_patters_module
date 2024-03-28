@@ -12,7 +12,7 @@ public class ServerConfig {
 
     private static String configFilePath = "config.json";
 
-    public static ServerConfig getInstance() {
+    public static synchronized ServerConfig getInstance() {
         if (instance == null) {
             instance = new ServerConfig();
         }
